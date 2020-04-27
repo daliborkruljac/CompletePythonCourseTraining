@@ -5,7 +5,9 @@
 # Then, print out how many months that equals to (you'll have to multiply the age by 12).
 
 name = input ('Enter your name: ')
-print ('Hello, ' + name)
+print (f'Hello, {name}.')
 
 age = int(input('Enter your age: '))
+months = age * 12
 
+print(f"This is {months} in months." )
