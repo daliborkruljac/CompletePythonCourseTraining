@@ -1,6 +1,6 @@
 nearby_people = {'Rolf', 'Jen', 'Anna'}
 
-user_friends = set()  
+user_friends = set() 
 #Empty curly braces {} will make an empty dictionary in Python. 
 # To make a set without any elements we use the set() function without any argument.
 
@@ -20,6 +20,6 @@ nearby_friends = user_friends.intersection(nearby_people)
 if nearby_friends == set():
     print('No nearby friends')
 else:
-    print(f'{nearby_friends} is nearby')
+    print(f''.join(nearby_friends))
 
 
