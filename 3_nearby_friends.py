@@ -20,6 +20,6 @@ nearby_friends = user_friends.intersection(nearby_people)
 if nearby_friends == set():
     print('No nearby friends')
 else:
-    print(f''.join(nearby_friends))
+    print(f'Nearby friend: '.join(nearby_friends))
 
 
