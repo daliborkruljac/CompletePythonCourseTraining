@@ -17,10 +17,10 @@ user_friends.add(friend)
 
 nearby_friends = user_friends.intersection(nearby_people)
 
-#uncomment next 3 lines to use if-else statement that is not covered yet 
-#if nearby_friends == set():
-#    print('No nearby friends')
-#else:
-    print(f'Nearby friend: '.join(nearby_friends))
+
+if nearby_friends == set():
+    print('No nearby friends')
+else:
+    print(''.join(nearby_friends) + ' is online')
 
 
