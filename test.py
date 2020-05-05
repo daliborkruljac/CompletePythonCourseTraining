@@ -1,9 +1,5 @@
-#test
+import math
 
-nameoftheset = set()
+print (abs((math.pi + math.e)/6)*100)
 
-sometuple = (1,2)
 
-somelist = [1,2,3]
-
-somelist.append(5)
