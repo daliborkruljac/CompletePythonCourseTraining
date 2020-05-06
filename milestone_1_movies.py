@@ -4,7 +4,7 @@
 movies = []
 selection = ''
 
-#function for Menu Prompt
+#function for Menu Prompt           need to define what to do if q is pressed
 def MenuPrompt():  
     MENU_PROMPT = "\nEnter 'a' to add a movie, 'l' to see your movies, 'f' to find a movie by title, or 'q' to quit: "
     selection = input(MENU_PROMPT)
