@@ -1,10 +1,15 @@
 import sys                              #Needed for exit program function
 
-#Version 1
-# Save movies to text file later in version 2, use dataabase in version 3
-#Version 4 - add smarter menu input (accepp Add, add, a and ADD for input for example)
+# Version 1
+# Version 1 - this is version 1
+# Version 2 - save movies list to text file 
+# Version 3 - use dataabase
+# Version 4 - add smarter menu input (accepp Add, add, a and ADD for input for example)
+# Version 5 - fix what to do if no movie is found and add search by director or year
+# Version 6 - add other fields
+# Version 7 - add custom fields
+
 movies = []                             #Define Movies as a list (dictionary key value pairs are inside this list)
-MENU_PROMPT = ''                        #Not needed really, just to satisfy debugger
 
 #function for Menu Prompt
 def MenuPrompt():  
