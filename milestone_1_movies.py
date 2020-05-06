@@ -51,21 +51,19 @@ def MovieList():
 
 # function for Movie Finding
 def MovieFind():
-    FIND_MENU_PROMPT = "\nEnter 't' to find a movie by Title, 'd' to find a movie by Director, 'y' to find a movie by Year, or 'q' to quit: "
-    findselection = input(FIND_MENU_PROMPT)
-    while findselection != 'q':
-        if findselection == 't':
-            pass
-        elif findselection == 'd':
-            pass
-        elif findselection == 'y':
-            pass
-        else:
-            print('Unknown command. Please try again.')
-            MovieFind()
-    if findselection == 'q':
-        print ('Ok, quitting the app')
-        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)
+    titleentered = input('Enter title: ')
+    print('These movies fit your search parameters: \n')
+    moviefound = 0
+    for movie in movies:
+        if titleentered == movie['title']:
+            print('Title: ' + movie['title'])
+            print('Director:' + movie['director'])
+            print('Year: ' + movie['year'])
+            print('\n')                         #line break after one movie listed
+            moviefound = 1
+    if moviefound == 0:
+        print('No movie found with that title.')
+    MenuPrompt()                                #after lisiting found movies, go to MenuPrompt
 
 
 MenuPrompt()                               #MenuPrompt - all actions decided based on this input
