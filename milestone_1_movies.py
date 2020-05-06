@@ -29,7 +29,8 @@ def MovieInput ():
         'director': director,
         'year': year
     })
-    selection == ''             #change selection to avoid infinite loop
+    selection = ''      #change selection to avoid infinite loop
+    MenuPrompt()
 
 # function for Movie Listing
 def MovieList():
