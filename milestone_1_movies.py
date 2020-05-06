@@ -1,8 +1,9 @@
 import sys                              #Needed for exit program function
 
-# Define movies as a list:
+#Version 1
 # Save movies to text file later in version 2, use dataabase in version 3
-movies = []                             #Define Movies as a list
+#Version 4 - add smarter menu input (accepp Add, add, a and ADD for input for example)
+movies = []                             #Define Movies as a list (dictionary key value pairs are inside this list)
 MENU_PROMPT = ''                        #Not needed really, just to satisfy debugger
 
 #function for Menu Prompt
@@ -21,7 +22,7 @@ def MenuPrompt():
             MenuPrompt()
     if selection == 'q':
         print ('Ok, quitting the app')
-        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys required)
+        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)
 
 
 # function for Movie Input
@@ -34,7 +35,7 @@ def MovieInput ():
         'director': director,
         'year': year
     })
-    MenuPrompt()
+    MenuPrompt()                            #After movie input go back to MenuPrompt to ask user what to do next
 
 
 # function for Movie Listing
@@ -50,7 +51,21 @@ def MovieList():
 
 # function for Movie Finding
 def MovieFind():
-    pass
+    FIND_MENU_PROMPT = "\nEnter 't' to find a movie by Title, 'd' to find a movie by Director, 'y' to find a movie by Year, or 'q' to quit: "
+    findselection = input(FIND_MENU_PROMPT)
+    while findselection != 'q':
+        if findselection == 't':
+            pass
+        elif findselection == 'd':
+            pass
+        elif findselection == 'y':
+            pass
+        else:
+            print('Unknown command. Please try again.')
+            MovieFind()
+    if findselection == 'q':
+        print ('Ok, quitting the app')
+        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)
 
 
 MenuPrompt()                               #MenuPrompt - all actions decided based on this input
