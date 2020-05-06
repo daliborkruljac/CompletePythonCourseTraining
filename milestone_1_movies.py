@@ -53,14 +53,14 @@ def MovieList():
 def MovieFind():
     titleentered = input('Enter title: ')
     print('These movies fit your search parameters: \n')
-    moviefound = 0
+    moviefound = 0                              #First we define there are no movies with that name in the list
     for movie in movies:
         if titleentered == movie['title']:
             print('Title: ' + movie['title'])
             print('Director:' + movie['director'])
             print('Year: ' + movie['year'])
-            print('\n')                         #line break after one movie listed
-            moviefound = 1
+            print('\n')                         #line break after one movie is listed
+            moviefound = 1                      #movie with that name is found so we will not print next statement 
     if moviefound == 0:
         print('No movie found with that title.')
     MenuPrompt()                                #after lisiting found movies, go to MenuPrompt
