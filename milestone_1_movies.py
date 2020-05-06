@@ -1,10 +1,11 @@
-# Incomplete app!
-# Define movies as a list:
-# Save movies to text file later (version 2, use dataabase in version 3)
-movies = []
-selection = ''
+import sys                              #Needed for exit program function
 
-#function for Menu Prompt           need to define what to do if q is pressed
+# Define movies as a list:
+# Save movies to text file later in version 2, use dataabase in version 3
+movies = []                             #Define Movies as a list
+MENU_PROMPT = ''                        #Not needed really, just to satisfy debugger
+
+#function for Menu Prompt
 def MenuPrompt():  
     MENU_PROMPT = "\nEnter 'a' to add a movie, 'l' to see your movies, 'f' to find a movie by title, or 'q' to quit: "
     selection = input(MENU_PROMPT)
@@ -20,10 +21,7 @@ def MenuPrompt():
             MenuPrompt()
     if selection == 'q':
         print ('Ok, quitting the app')
-        return None
-
-    
-    
+        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys required)
 
 
 # function for Movie Input
@@ -41,13 +39,19 @@ def MovieInput ():
 
 # function for Movie Listing
 def MovieList():
-    pass
+    print("This is your movie list:\n")
+    for movie in movies:
+        print('Title: ' + movie['title'])
+        print('Director:' + movie['director'])
+        print('Year: ' + movie['year'])
+        print('\n')                         #line break after one movie listed
+    MenuPrompt()                            #After listing movies go back to MenuPrompt  (otherwise app will list movies all the time#
+
 
 # function for Movie Finding
 def MovieFind():
     pass
 
 
-# Remember to run the user menu function at the end!
+MenuPrompt()                               #MenuPrompt - all actions decided based on this input
 
-MenuPrompt()
