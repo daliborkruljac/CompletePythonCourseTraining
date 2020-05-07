@@ -47,10 +47,7 @@ def MovieInput ():
 def MovieList():
     print("This is your movie list:\n")
     for movie in movies:
-        print('Title: ' + movie['title'])
-        print('Director:' + movie['director'])
-        print('Year: ' + movie['year'])
-        print('\n')                         #line break after one movie listed
+        MoviePrint(movie)
     MenuPrompt()                            #After listing movies go back to MenuPrompt  (otherwise app will list movies all the time#
 
 
@@ -61,14 +58,19 @@ def MovieFind():
     moviefound = 0                              #First we define there are no movies with that name in the list
     for movie in movies:
         if titleentered == movie['title']:
-            print('Title: ' + movie['title'])
-            print('Director:' + movie['director'])
-            print('Year: ' + movie['year'])
-            print('\n')                         #line break after one movie is listed
-            moviefound = 1                      #movie with that name is found so we will not print next statement 
+           MoviePrint(movie)
+           moviefound = 1                      #movie with that name is found so we will not print next statement 
     if moviefound == 0:
         print('No movie found with that title.')
     MenuPrompt()                                #after lisiting found movies, go to MenuPrompt
+
+
+#function for movie printing
+def MoviePrint(movie):
+    print('Title: ' + movie['title'])
+    print('Director:' + movie['director'])
+    print('Year: ' + movie['year'])
+    print('\n')      
 
 
 MenuPrompt()                               #MenuPrompt - all actions decided based on this input
