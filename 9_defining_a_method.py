@@ -10,9 +10,11 @@ class MovieListing:
 
 # You only need to finish the method, we will take care of the object creation and call your method for you!
 
-# Code below is not needed in the taks
 
-my_movie = MovieListing ('The Matrix', 'Wachowski')
+# Code below is not needed in the taks, we just need to create the method
+# Code below is to confirm code above works fine
+
+my_movie = MovieListing ('The Matrix', 'Wachowski brothers')
 
 MovieListing.print_info(my_movie)
 
