@@ -11,15 +11,18 @@ class Club:
         return f'<Club {self.name}: {self.players}>'
 
     def __str__(self):
-        return f'Club {self.name} with {len(self.players)}'
+        return f'Club {self.name} with {len(self.players)} players '
 
     # define a method that allows us to access the i-th player in the club directly via indexing.
     # for example, if some_club is an object of Club class,
     # we can access the i-th player in some_club like this (you may assume i is always valid):
     # some_club[i]
 
-def __getitem__(self, i):
-    return self.players[i]
+    def __len__(self):
+        return len(self.players)
+
+    def __getitem__(self, i):
+        return self.players[i]
 
     # define a method that returns a string representation of this object,
     # which can be used to recreate this object.
@@ -27,8 +30,8 @@ def __getitem__(self, i):
     # Club {club_name}: {list_of_players}
     # the club_name and list_of_players should be replaced by the according value of current object
 
-def __repr__(self):
-    return f'Club {self.name}: {self.players}'
+    def __repr__(self):
+        return f'Club {self.name}: {self.players}'
 
     # define a method that returns a readable string representation of this object for the user.
     # The return value should be in such format (beware of the spacing):
@@ -36,20 +39,24 @@ def __repr__(self):
     # the club_name and count_of_players should be replaced by the according value of current object
 
 
-def __str__(self):
-    return(f'Club {self.name} with {len(self)} players')
-
+    def __str__(self):
+        return f'Club {self.name} with {len(self.players)} players'
+        #return 'Club {} with {} players'.format(self.name, len(self))
+    #WHY IS PLAYERS STRING NOT PRINTED? 
+    #Fixed, now why I have this doubled?????
+    
 # You only need to finish the methods, we will take care of the object creation and call those methods for you!
 
-#Anyway...
+# Dalibor: Anyway... Let's test this:
 
- 
 my_club = Club('MUFC')
 my_club.players.append('Bob Bobby')
 my_club.players.append('John Johnny')
 my_club.players.append('Don Donny')
- 
+
 print(str(my_club))
-print(repr(my_club))
+print(repr(my_club)) 
+
+
 
 
