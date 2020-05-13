@@ -6,7 +6,7 @@ for simplicity, you may assume that the input is always an integer for this exer
 """
 def count_from_zero_to_n(n):
     if (n < 0):
-        raise ValueError ("This is not a valid argument")
+        raise ValueError ("Input must be a positive integer")
     for x in range(0, n+1):
         print(x)
 
