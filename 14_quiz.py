@@ -28,11 +28,14 @@ for line in quiz:
         guessed += 1
 
 print (f'You final score is {guessed}/{numberofquestions}.')
+quiz.close()
+
 
 #let's print to file also
 results = open('results.txt','w+')
 results.write (f'You final score is {guessed}/{numberofquestions}.')
 results.close()
+
 
 '''
 #Proposed solution:
