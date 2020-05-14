@@ -11,7 +11,7 @@ myfriend3 = input ('Please enter 3rd friend name: ')
 
 myfriendslist = [myfriend1,myfriend2,myfriend3]
 myfriendsset = set(myfriendslist)
-print (myfriendsset)  #to be removed
+#print (myfriendsset)  #to be removed
 
 
 peoplefile = open('people.txt','r')
@@ -20,13 +20,15 @@ peoplefile.close()
 
 
 peopleset = set(peoplelist)    
-print(peopleset)    #to be removed
+#print(peopleset)    #to be removed
 
 friendsnearbyset = myfriendsset.intersection(peopleset)
-print(friendsnearbyset)#to be removed
+#print(friendsnearbyset)#to be removed
 
 friendsnearbyfile = open('nearby_friends.txt','w')
 
 for friend in friendsnearbyset:
+    print(f'{friend} is nearby! Meet up with them.')
     friendsnearbyfile.write(f'{friend}\n')
 
+friendsnearbyfile.close()
