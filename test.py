@@ -1,15 +1,16 @@
-def power_of_two():
-    user_input = input('Please enter a number: ')
-    try:
-        n = float(user_input)
-    except ValueError:
-        print('Your input was invalid.')
-    finally:
-        n_square = n ** 2
-        return n_square
+#Read file completely
+my_file = open('data.txt','r')
+file_content = my_file.read()
 
+my_file.close()
 
-print (power_of_two())
+print (file_content)
+
+#open files for smallest period of place possible
+user_name = input('Enter your name: ')
+my_file_writing = open('data.txt','w')
+my_file_writing.write(user_name)
+my_file_writing.close()
 
 
 
