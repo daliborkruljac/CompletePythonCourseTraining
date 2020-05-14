@@ -7,9 +7,18 @@
 # then proceed to ask the user 'Do you want to play again? (y/N):' like the original function does
 def interact():
     while True:  # keep looping until user reach break statement
-        user_input = int(input('Please input an integer:'))     # turn the user input into an integer
-        print('{} is {}.'.format(user_input, 'even' if user_input % 2 == 0 else 'odd'))     # print out the message '{user_input} is {even/odd}.'
-        user_input = input('Do you want to play again? (y/N):')
-        if user_input != 'y':   # quit if the user didn't input `y`
-            print('Goodbye.')
-            break   # break the while loop to quit
+        try:
+            user_input = int(input('Please input an integer:'))     # turn the user input into an integer
+        except ValueError:
+            print('Please input integers only')
+        else:
+             print('{} is {}.'.format(user_input, 'even' if user_input % 2 == 0 else 'odd'))     # print out the message '{user_input} is {even/odd}.'
+        finally:    
+            user_input = input('Do you want to play again? (y/N):')
+            if user_input != 'y':   # quit if the user didn't input `y`
+                print('Goodbye.')
+                break   # break the while loop to quit
+
+
+# Test:
+interact()
