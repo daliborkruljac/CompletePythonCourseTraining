@@ -18,6 +18,7 @@ numberofquestions = 0
 quiz = open('questions.txt', 'r')
             #each question is a str "1+1=2\n"
 
+#solution below my code shows easier way to do it
 for line in quiz:
     quizline = line.rstrip("\n")        #remove the line break at the end
     quizline = quizline.split('=')      #now our line is a list ['1+1','2']
