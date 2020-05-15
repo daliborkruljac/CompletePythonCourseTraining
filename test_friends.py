@@ -5,6 +5,7 @@ filecontents = json.load(file)       #reads file and turns it to dictionary
 file.close()
 
 print (filecontents['friends'][0])
+print (filecontents)
 
 cars = [
     {'make': 'Ford', 'model': 'Fiesta'},
