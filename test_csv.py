@@ -43,3 +43,5 @@ def read_from_file():
         return list(reader) #returns an ordered list of dictionaries
 
 read_from_file()
+write_to_file(movies)
+
