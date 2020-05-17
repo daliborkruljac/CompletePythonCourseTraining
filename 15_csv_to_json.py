@@ -19,8 +19,6 @@ def read_from_csv():
         csv_list = []
         for line in reader:
             csv_list.append(line)
-        f.close()
-        print (csv_list)
         return csv_list
 
 #function for writing data to json file
