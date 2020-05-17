@@ -14,11 +14,14 @@ import json
 
 #function for returning dictionary from 
 def read_from_csv():
-    with open('csv_file.txt','r') as f:
-        reader=csv.DictReader(f)
+    with open('csv_file.txt','r') as f:  #it's not a dictionary so I need to load
+        reader=csv.DictReader(f, fieldnames=['club','city','country'])
+        csv_list = []
         for line in reader:
-            return list(reader) #returns an ordered list of dictionaries
-        file.close()
+            csv_list.append(line)
+        f.close()
+        print (csv_list)
+        return csv_list
 
 #function for writing data to json file
 #def write_to_json():
