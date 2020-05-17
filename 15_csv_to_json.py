@@ -12,23 +12,17 @@
 import csv
 import json
 
-#function for returning dictionary from 
-def read_from_csv():
-    with open('csv_file.txt','r') as f:  #it's not a dictionary so I need to load
+def csv_to_json():
+    with open('csv_file.txt','r') as f:
         reader=csv.DictReader(f, fieldnames=['club','city','country'])
         csv_list = []
         for line in reader:
             csv_list.append(line)
-        return csv_list
+    with open('json_file.txt','w') as f:
+        json.dump(csv_list, f)
+    
+csv_to_json()
 
-#function for writing data to json file
-#def write_to_json():
-def write_to_json():
-    file = open('json_file.txt','w')
-    json.dump(read_from_csv(), file)
-    file.close()
 
-read_from_csv()
-write_to_json()
 
 
