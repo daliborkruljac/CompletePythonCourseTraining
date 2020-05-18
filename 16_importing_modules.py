@@ -20,34 +20,33 @@ class Calculator:
     # you may learn from it and implement the other methods
     @classmethod
     def add(cls, num1, num2):
-        return Addition.add(num1, num2)  # make use of add() from addition module
+        return Addition.add(num1, num2)         # make use of add() from addition module
 
     # implement a class method `subtract()` that takes in num1 and num2 and return num1 - num2
     # your `subtract()` method cannot use the + - * / calculation operators, but can use - as a negative sign operator
     @classmethod
-    def substract(cls,num1, num2):
-        return cls.add(num1, -num2)
+    def subtract(cls,num1, num2):
+        return cls.add(num1, -num2)             # turn subtraction to adding a negative num2
+ 
 
     # implement a class method `multiply()` that takes in num1 and num2 and return num1 * num2
     # your `multiply()` method cannot use the + - * / calculation operators, but can use - as a negative sign operator
     # you may assume num1 and num2 are always non-negative integers
     @classmethod
     def multiply(cls, num1, num2):
-        x = 0
-        while x < num2:
-            result = cls.add(0, num2)    
-            x += 1
-        return result
+        res = 0
+        for x in range(0, num2):
+            res = cls.add(res, num1)            # add num1 for num2 times
+        return res
+ 
 
     # implement a class method `divide()` that takes in num1 and num2 and return num1 // num2
     # your `divide()` method cannot use the + - * / calculation operators, but can use - as a negative sign operator
     # you may assume num1 is always a non-negative integer, and num2 is always a positive integer
     @classmethod
     def divide(cls, num1, num2):
-        x = 0
-        temp = num1
-        while temp >= num2:
-            temp = cls.add(temp, -num2)
-            x += 1
-        return x
-    
+        res = 0
+        while num1 >= num2:
+            num1 = cls.subtract(num1, num2)     # subtract num2 from num1 until its remainder is smaller than num2
+            res = cls.add(res, 1)               # count the times of subtraction as the result
+        return res
