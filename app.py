@@ -40,7 +40,7 @@ def prompt_add_book():
                               
 
 def prompt_list_books():
-    print (database.read_books_list())      #for now printing unformated
+    database.read_books_list()      #for now printing unformated
     menu()
 
 def prompt_read_book():

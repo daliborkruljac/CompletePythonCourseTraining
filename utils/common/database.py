@@ -32,9 +32,11 @@ def read_book(name):        #go over list items and change read to True where na
 
 #define all the functions
 def list_books():
+    books = read_books_list()
     for book in books:
-        print (book)
-    menu()
+        print (f'Book name:\t {book['name']}'
+        print (f'Book author:\t {book['name']}'))
+
 
 
 def delete_book(name):
