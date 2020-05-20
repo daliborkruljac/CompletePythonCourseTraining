@@ -44,7 +44,9 @@ def prompt_list_books():
     menu()
 
 def prompt_read_book():
-    pass
+    name = input('Enter book name: ')
+    database.read_book(name)
+    menu()
 
 def prompt_delete_book():
     pass

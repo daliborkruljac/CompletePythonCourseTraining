@@ -24,12 +24,17 @@ def add_book(name,author):
     save_books_list()
 
 
-def read_book(name):
-    pass
+def read_book(name):        #go over list items and change read to True where name matches  #does not work (yet)
+    for book in books:
+        if book['name'] == name :
+            book['read'] = True
+
 
 #define all the functions
 def list_books():
-    print(f'')
+    for book in books:
+        print (book)
+    menu()
 
 
 def delete_book(name):
