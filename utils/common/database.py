@@ -4,16 +4,24 @@ Concerned with storing and retreiving books from a list
 
 books = []
 
-def add_book(name,author):
-    books.apend({'name':name, 'author':author, 'read':False})
+def read_books_list():
+    with open('books_list.txt','r') as f:
+        for line in f:
+            currentPlace = line[:-1]
+            books.append(currentPlace)
 
+def add_book(name,author):
+    books.append({'name':name, 'author':author, 'read':False})
+    print('Book added.\n')
+    save_books_list()
+
+
+def read_book(name):
+    pass
 
 #define all the functions
 def list_books():
     print(f'')
-
-def read_book(name):
-    pass
 
 
 def delete_book(name):
@@ -21,5 +29,7 @@ def delete_book(name):
 
 def save_books_list():
     with open('books_list.txt','w') as f:
-        f.write(books)
+        for line in books:
+            f.write('%s\n' % line)
+    print("List saved.")
 

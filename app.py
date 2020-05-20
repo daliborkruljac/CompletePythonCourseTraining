@@ -16,22 +16,30 @@ def menu():
     user_input = input(USER_CHOICE)
     while user_input != 'q':
         if user_input == "a":
-            add_book()
+            prompt_add_book()
         elif user_input == "l":
-            listbooks()             
+            prompt_listbooks()             
         elif user_input == "r":
-            readbook()
-        else user_input == "d":
-            deletebook()
-        else user_input == "s":
-            save_books_list()
+            prompt_readbook()
+        elif user_input == "d":
+            prompt_deletebook()
+        elif user_input == "s":
+            prompt_save_books_list()
         else:
             print('Unknown command. Please try again.')
-            MenuPrompt()
+            menu()
     if user_input == 'q':
         print ('Ok, quitting the app')
-        exit()                        #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)
+        exit()                      #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)  
 
+def prompt_add_book():
+    name = input("Book name: ")
+    author = input("Author: ")
+    database.add_book(name, author)
+    menu()
+                              
+database.read_books_list()
+menu()
 
 
 # def prompt_add_book()     ask for book name
