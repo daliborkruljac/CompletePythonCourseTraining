@@ -1,10 +1,16 @@
-import utils.file_operations
-#another options is   from utils.file_operations import save_to_file, read_to_file
-#then we could call that function with   save_to_file or read_to_file command
+from utils.common import database
 
-from utils.find import find_in
+USER_CHOICE = """
+Enter:
+- 'a' to add a new book
+- 'l' to list all books
+- 'r' to mark a book as read
+- 'd' to delete a book
+- 'q' to quit
 
-string='John'
-utils.file_operations.save_to_file(string,'data.txt')
+Your choice:"""
 
-print(utils.file_operations.read_to_file('data.txt'))
+def menu():
+    user_input = input(USER_CHOICE)
+    while user_input != 'q':
+        pass
