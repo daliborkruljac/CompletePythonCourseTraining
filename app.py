@@ -18,11 +18,11 @@ def menu():
         if user_input == "a":
             prompt_add_book()
         elif user_input == "l":
-            prompt_listbooks()             
+            prompt_list_books()             
         elif user_input == "r":
-            prompt_readbook()
+            prompt_read_book()
         elif user_input == "d":
-            prompt_deletebook()
+            prompt_delete_book()
         elif user_input == "s":
             prompt_save_books_list()
         else:
@@ -38,9 +38,24 @@ def prompt_add_book():
     database.add_book(name, author)
     menu()
                               
-database.read_books_list()
-menu()
 
+def prompt_list_books():
+    print (database.read_books_list())      #for now printing unformated
+    menu()
+
+def prompt_read_book():
+    pass
+
+def prompt_delete_book():
+    pass
+
+def prompt_save_books_list():
+    pass
+
+#Let's read books list first:
+database.read_books_list()
+
+menu()
 
 # def prompt_add_book()     ask for book name
 # def prompt_list_books()   show all the books
@@ -48,3 +63,4 @@ menu()
 # def prompt_delete_book()  ask for book name and remove book from the list
 # def save_books_list()     bonus points: save books list to a file
 # for extra bonus, autosave list on every change (add save function cls to each function)
+# need to remove duplicates or check if exists when adding
