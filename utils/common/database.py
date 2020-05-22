@@ -1,43 +1,54 @@
+import json
+import os
+
+
 '''
 Concerned with storing and retreiving books from a list
 '''
 
-def read_books_list():
-    books = []
-    with open('books_list.txt','r') as f:
-        for line in f:
-            currentPlace = line[:-1]
-            books.append(currentPlace)
-    return books
+books_file = 'books.json'                   #here is defined filename where our records are stored
 
+#function to check if file is empty
+def check_file():
+    if os.stat(books_file).st_size == 0:        #if json is empty, add empty list to it 
+            with open(books_file, 'w') as file:
+                json.dump([], file)
 
-def add_book(books, name,author):
-    books.append({'name': name, 'author': author, 'read': False})
-    print('Book added.\n')
-    save_books_list(books)
+#function for reading books from the file
+def read_books():
+        check_file()
+        with open(books_file, 'r') as file:
+            return json.load(file)               
+    
 
-
-def save_books_list(books):
-    with open('books_list.txt','w') as f:
+#function for saving books to the file
+def save_books(books):
+    with open(books_file, 'w') as file:
         for book in books:
-            f.write('%s\n' % book)
+            json.dump(book, file)
 
 
-def list_books(books):
+
+#function for adding book record to the file
+def add_book(name,author):
+    books = read_books()
+    books.append({'name': name, 'author': author, 'read': False})
+    save_books(books)
+
+
+#function for marking book as read in the file
+def mark_book_read(name):
+    books = read_books()
     for book in books:
-        dict.get
-
-
-def read_book(books,name):        #go over list items and change read to True where name matches  #does not work (yet)
-    books = read_books_list()
-    for book in books:
-        if book['name'] == name :
+        if book['name'] == name:
             book['read'] = True
+    save_books(books)
 
 
+
+#function for removing book record from the file
 def delete_book(name):
-    books = read_books_list()
-    book = [book for book in books if book['name'] != name]
-
-
-
+    books = read_books()
+    books = [book for book in books if book['name'] != name]
+    check_file()
+    save_books(books)

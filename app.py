@@ -1,6 +1,7 @@
 import sys
 from utils.common import database
 
+#multiline string defined here
 USER_CHOICE = """
 Enter:
 - 'a' to add a new book
@@ -10,65 +11,56 @@ Enter:
 - 's' save your list of all books
 - 'q' to quit
 
-Your choice:"""
+Your choice: """                            #space added after question
 
+#function for user menu input
 def menu():
     user_input = input(USER_CHOICE)
-    while user_input != 'q':
+    while user_input != 'q':                        #go through the loop if q is not pressed:
         if user_input == "a":
             prompt_add_book()
         elif user_input == "l":
-            prompt_list_books()             
+            list_books()             
         elif user_input == "r":
             prompt_read_book()
         elif user_input == "d":
             prompt_delete_book()
-        elif user_input == "s":
-            prompt_save_books_list()
         else:
             print('Unknown command. Please try again.')
             menu()
-    if user_input == 'q':
+    if user_input == 'q':                       #q is pressed - print a message and exit
         print ('Ok, quitting the app')
-        exit()                      #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)  
+        exit()                                  #this is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)  
 
- # OK: going to database.py and adding book to our list of dictionaries
+
+#function for reading books
+def list_books():
+    books = database.read_books()
+    print('\nList of your books: \n')
+    for book in books:
+            print (f"\n{book['name']} by {book['author']} - Book read: {read}")
+    menu()
+
+#function for adding books
 def prompt_add_book():                 
-    books_list = database.read_books_list()
     name = input("Book name: ")
     author = input("Author: ")
-    database.add_book(books_list, name, author)
+    database.add_book(name, author)
+    print (f'\nBook {name} by {author} added to your list\n')
     menu()                         #When done adding book, go back to menu
                               
-# NOT OK: LISTING BOOKS
-def prompt_list_books():
-    books_list = database.read_books_list()
-    database.list_books(books_list)      #for now printing unformated
-    menu()
 
 def prompt_read_book():
     name = input('Enter book name: ')
-    database.read_book(name)
+    database.mark_book_read(name)
+    print(f'Book {name} marked as read')
     menu()
 
 def prompt_delete_book():
-    pass
+    name = input('Enter book name: ')
+    database.delete_book(name)
+    print(f'\nBook {name} deleted\n')
     menu()
 
-def prompt_save_books_list(books_list):
-    database.save_books_list(books_list)
-    print('\nSaved\n')
-    menu()
-
-
-#Let's read books list first:
-books_list = database.read_books_list
-menu()
-
-# def prompt_add_book()     ask for book name
-# def prompt_list_books()   show all the books
-# def prompt_read_book()    ask for book name and change it to "read" in our list
-# def prompt_delete_book()  ask for book name and remove book from the list
-# def save_books_list()     bonus points: save books list to a file
-# for extra bonus, autosave list on every change (add save function cls to each function)
-# need to remove duplicates or check if exists when adding
+books = database.read_books()                   #load books
+menu()   
