@@ -32,15 +32,18 @@ def menu():
         print ('Ok, quitting the app')
         exit()                      #This is so that our app stops on 'q' and does not go in MenuPrompt again (import sys was required for this command)  
 
-def prompt_add_book():
+ # OK: going to database.py and adding book to our list of dictionaries
+def prompt_add_book():                 
+    books_list = database.read_books_list()
     name = input("Book name: ")
     author = input("Author: ")
-    database.add_book(name, author)
-    menu()
+    database.add_book(books_list, name, author)
+    menu()                         #When done adding book, go back to menu
                               
-
+# NOT OK: LISTING BOOKS
 def prompt_list_books():
-    database.read_books_list()      #for now printing unformated
+    books_list = database.read_books_list()
+    database.list_books(books_list)      #for now printing unformated
     menu()
 
 def prompt_read_book():
@@ -50,13 +53,16 @@ def prompt_read_book():
 
 def prompt_delete_book():
     pass
+    menu()
 
-def prompt_save_books_list():
-    pass
+def prompt_save_books_list(books_list):
+    database.save_books_list(books_list)
+    print('\nSaved\n')
+    menu()
+
 
 #Let's read books list first:
-database.read_books_list()
-
+books_list = database.read_books_list
 menu()
 
 # def prompt_add_book()     ask for book name
