@@ -65,5 +65,5 @@ def prompt_delete_book():
     menu()
 
 #Let's read books list first:
-books_list = database.read_books_list
+books_list = database.read_books
 menu()
