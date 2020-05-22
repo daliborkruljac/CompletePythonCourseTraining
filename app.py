@@ -64,4 +64,6 @@ def prompt_delete_book():
     print(f'\nBook {name} deleted\n')
     menu()
 
+#Let's read books list first:
+books_list = database.read_books_list
 menu()
