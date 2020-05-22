@@ -16,17 +16,15 @@ def check_file():
 
 #function for reading books from the file
 def read_books():
-        check_file()
-        with open(books_file, 'r') as file:
-            return json.load(file)               
+    check_file()
+    with open(books_file, 'r') as file:
+        return json.load(file)               
     
 
 #function for saving books to the file
 def save_books(books):
     with open(books_file, 'w') as file:
-        for book in books:
-            json.dump(book, file)
-
+        json.dump(books, file)
 
 
 #function for adding book record to the file
@@ -50,5 +48,6 @@ def mark_book_read(name):
 def delete_book(name):
     books = read_books()
     books = [book for book in books if book['name'] != name]
-    check_file()
     save_books(books)
+   
+

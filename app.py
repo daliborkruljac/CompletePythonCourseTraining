@@ -8,13 +8,14 @@ Enter:
 - 'l' to list all books
 - 'r' to mark a book as read
 - 'd' to delete a book
-- 's' save your list of all books
 - 'q' to quit
 
 Your choice: """                            #space added after question
 
 #function for user menu input
 def menu():
+    database.check_file()
+    books = database.read_books()                   #load books
     user_input = input(USER_CHOICE)
     while user_input != 'q':                        #go through the loop if q is not pressed:
         if user_input == "a":
@@ -35,16 +36,17 @@ def menu():
 
 #function for reading books
 def list_books():
-    books = database.read_books()
+    books = database.read_books()                   #load books
     print('\nList of your books: \n')
     for book in books:
-            print (f"\n{book['name']} by {book['author']} - Book read: {read}")
+            read = 'YES' if book['read'] else 'NO'
+            print (f"{book['name']} by {book['author']} - Book read: {read}")
     menu()
 
 #function for adding books
-def prompt_add_book():                 
-    name = input("Book name: ")
-    author = input("Author: ")
+def prompt_add_book():            
+    name = input("Enter book name: ")
+    author = input("Enter book author: ")
     database.add_book(name, author)
     print (f'\nBook {name} by {author} added to your list\n')
     menu()                         #When done adding book, go back to menu
@@ -62,5 +64,4 @@ def prompt_delete_book():
     print(f'\nBook {name} deleted\n')
     menu()
 
-books = database.read_books()                   #load books
-menu()   
+menu()
