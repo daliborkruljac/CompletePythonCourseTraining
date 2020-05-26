@@ -1,53 +1,57 @@
-import json
-import os
-
+import sqlite3
 
 '''
-Concerned with storing and retreiving books from a list
+Concerned with storing and retreiving books to db
 '''
 
-books_file = 'books.json'                   #here is defined filename where our records are stored
+#defined filename where our records are stored
 
-#function to check if file is empty
-def check_file():
-    if os.stat(books_file).st_size == 0:        #if json is empty, add empty list to it 
-            with open(books_file, 'w') as file:
-                json.dump([], file)
 
-#function for reading books from the file
-def read_books():
-    check_file()
-    with open(books_file, 'r') as file:
-        return json.load(file)               
+#creating database
+def create_book_table():
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXISTS  books(name text, author text, read integer)')
+    connection.commit()
+    connection.close()
     
-
-#function for saving books to the file
-def save_books(books):
-    with open(books_file, 'w') as file:
-        json.dump(books, file)
-
-
-#function for adding book record to the file
+        
+#adding book record to database
 def add_book(name,author):
-    books = read_books()
-    books.append({'name': name, 'author': author, 'read': False})
-    save_books(books)
+    #do not use f string in sql statements to avoid SQL inject
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute('INSERT INTO books VALUES(?, ?, 0)', (name, author))
+    connection.commit()
+    connection.close()
 
 
-#function for marking book as read in the file
+#retrieve all books from the table (db)
+def get_all_books():
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM books')
+    #books = cursor.fetchall()           #returns a list of tuples [(name, author, read),(name, author, read)]
+    books = [{'name': row[0], 'author': row[1], 'read': row[2]} for row in cursor.fetchall()]   #this will give us a dictionary from the tuples lists
+    #connection.commit()                 #commit not needed as we were not writing anything to db
+    connection.close()
+    return books                        #return books dictionary  (list function works)
+
+#marking book as read in db
 def mark_book_read(name):
-    books = read_books()
-    for book in books:
-        if book['name'] == name:
-            book['read'] = True
-    save_books(books)
-
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute('UPDATE books SET read = 1 WHERE name = ?',(name, ))     #comma after name as we want to make sure it is tupple
+    connection.commit()
+    connection.close()
 
 
 #function for removing book record from the file
 def delete_book(name):
-    books = read_books()
-    books = [book for book in books if book['name'] != name]
-    save_books(books)
+    connection = sqlite3.connect('data.db')
+    cursor = connection.cursor()
+    cursor.execute('DELETE FROM  books WHERE name = ?',(name, ))     #comma after name as we want to make sure it is tupple
+    connection.commit()
+    connection.close()
    
 

@@ -1,4 +1,4 @@
-import sys
+import sys                          #exit menu
 from utils.common import database
 
 #multiline string defined here
@@ -14,8 +14,8 @@ Your choice: """                            #space added after question
 
 #function for user menu input
 def menu():
-    database.check_file()
-    books = database.read_books()                   #load books
+    database.create_book_table()
+    books = database.get_all_books()                   #load books
     user_input = input(USER_CHOICE)
     while user_input != 'q':                        #go through the loop if q is not pressed:
         if user_input == "a":
@@ -36,7 +36,6 @@ def menu():
 
 #function for reading books
 def list_books():
-    books = database.read_books()                   #load books
     print('\nList of your books: \n')
     for book in books:
             read = 'YES' if book['read'] else 'NO'
@@ -64,6 +63,7 @@ def prompt_delete_book():
     print(f'\nBook {name} deleted\n')
     menu()
 
-#Let's read books list first:
-books_list = database.read_books
+#START THE APP:
+database.create_book_table()
+books = database.get_all_books()        #we need this altough we use it in function
 menu()
