@@ -21,7 +21,7 @@ def menu():
         if user_input == "a":
             prompt_add_book()
         elif user_input == "l":
-            list_books()             
+            list_books(books)             
         elif user_input == "r":
             prompt_read_book()
         elif user_input == "d":
@@ -35,7 +35,7 @@ def menu():
 
 
 #function for reading books
-def list_books():
+def list_books(books):
     print('\nList of your books: \n')
     for book in books:
             read = 'YES' if book['read'] else 'NO'
