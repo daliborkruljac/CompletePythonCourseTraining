@@ -8,7 +8,7 @@ Concerned with storing and retreiving books to db
 
 
 #creating database
-def create_book_table():
+def create_book_table() -> None:
     connection = sqlite3.connect('data.db')
     cursor = connection.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS  books(name text, author text, read integer)')
