@@ -26,11 +26,14 @@ for n in range(2,20):
 def prime_generator(bound):
     # your code starts here (delete the pass):
     for i in range (2, bound):
-        for x in range (2, bound):
+        for x in range (2, i):
             if i %x == 0:
                 break
         else:
             yield i
 
-    
+#TEST
+ourbound = int(input ('Enter bound: '))             #please don't go much over 10000
+g = prime_generator(ourbound)
+print(list(g))
 
