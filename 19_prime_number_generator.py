@@ -25,5 +25,12 @@ for n in range(2,20):
 
 def prime_generator(bound):
     # your code starts here (delete the pass):
-    pass
+    for i in range (2, bound):
+        for x in range (2, bound):
+            if i %x == 0:
+                break
+        else:
+            yield i
+
+    
 
