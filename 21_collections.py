@@ -9,6 +9,7 @@ def task1() -> defaultdict:
     """
     # you code starts here:
     pass
+    
 
 
 def task2(arg_od: OrderedDict):
